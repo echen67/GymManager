@@ -1,0 +1,7 @@
+<ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" editor-extension-mode="False">
+    <ui:VisualElement name="Canvas" style="flex-grow: 1;">
+        <ui:VisualElement name="TopBar" style="flex-grow: 1;">
+            <ui:Label text="0" name="MoneyLabel" style="-unity-text-align: upper-right; font-size: 60px;" />
+        </ui:VisualElement>
+    </ui:VisualElement>
+</ui:UXML>
