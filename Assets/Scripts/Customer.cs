@@ -22,6 +22,7 @@ public class Customer : MonoBehaviour
         moneyManager = GameObject.Find("MoneyManager").GetComponent<MoneyManager>();
         spawnLocation = GameObject.Find("SpawnLocation").transform;
         exitLocation = GameObject.Find("ExitLocation").transform;
+        targetMachine = GameObject.Find("Machine");
         agent = GetComponent<NavMeshAgent>();
         animator = GetComponent<Animator>();
         audioSource = GetComponent<AudioSource>();
