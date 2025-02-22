@@ -852,37 +852,9 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 1486033333322372611, guid: cfb146b6d1f713e4abb19853f3e7e2f0, type: 3}
-      propertyPath: m_Constraints
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1486033333322372611, guid: cfb146b6d1f713e4abb19853f3e7e2f0, type: 3}
-      propertyPath: m_IsKinematic
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1656538888395366415, guid: cfb146b6d1f713e4abb19853f3e7e2f0, type: 3}
-      propertyPath: m_Height
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 1656538888395366415, guid: cfb146b6d1f713e4abb19853f3e7e2f0, type: 3}
-      propertyPath: m_Enabled
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 1656538888395366415, guid: cfb146b6d1f713e4abb19853f3e7e2f0, type: 3}
-      propertyPath: m_Center.y
-      value: 0.5
-      objectReference: {fileID: 0}
-    - target: {fileID: 1656538888395366415, guid: cfb146b6d1f713e4abb19853f3e7e2f0, type: 3}
-      propertyPath: m_SlopeLimit
-      value: 5
-      objectReference: {fileID: 0}
-    - target: {fileID: 1656538888395366415, guid: cfb146b6d1f713e4abb19853f3e7e2f0, type: 3}
-      propertyPath: m_StepOffset
-      value: 0.1
-      objectReference: {fileID: 0}
-    - target: {fileID: 1657988716327172095, guid: cfb146b6d1f713e4abb19853f3e7e2f0, type: 3}
-      propertyPath: m_Enabled
-      value: 1
+    - target: {fileID: 196191887531583099, guid: cfb146b6d1f713e4abb19853f3e7e2f0, type: 3}
+      propertyPath: repairCost
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 6710078742882103395, guid: cfb146b6d1f713e4abb19853f3e7e2f0, type: 3}
       propertyPath: m_LocalPosition.x
@@ -928,20 +900,19 @@ PrefabInstance:
       propertyPath: m_Name
       value: Player
       objectReference: {fileID: 0}
-    - target: {fileID: 8361075684062249865, guid: cfb146b6d1f713e4abb19853f3e7e2f0, type: 3}
-      propertyPath: Loop
-      value: 1
+    - target: {fileID: 7152804544136421319, guid: cfb146b6d1f713e4abb19853f3e7e2f0, type: 3}
+      propertyPath: m_TagString
+      value: Player
       objectReference: {fileID: 0}
     - target: {fileID: 8361075684062249865, guid: cfb146b6d1f713e4abb19853f3e7e2f0, type: 3}
-      propertyPath: m_Enabled
+      propertyPath: Loop
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8361075684062249865, guid: cfb146b6d1f713e4abb19853f3e7e2f0, type: 3}
       propertyPath: m_PlayOnAwake
       value: 0
       objectReference: {fileID: 0}
-    m_RemovedComponents:
-    - {fileID: 1486033333322372611, guid: cfb146b6d1f713e4abb19853f3e7e2f0, type: 3}
+    m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
@@ -979,7 +950,7 @@ MonoBehaviour:
   machineManager: {fileID: 1032511191}
   customerManager: {fileID: 1786113732}
   uiScript: {fileID: 379653660}
-  timeSpeed: 10
+  timeSpeed: 2
 --- !u!4 &1565867561
 Transform:
   m_ObjectHideFlags: 0
@@ -1040,6 +1011,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1b1423d9584c5904982e3149d2bcd0fe, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  gainMoneySFX: {fileID: 8300000, guid: 3a569d315db695c45b17f38094540ca8, type: 3}
+  loseMoneySFX: {fileID: 8300000, guid: 33c591f366dc7074691f4310382cd6c4, type: 3}
 --- !u!82 &1783287825
 AudioSource:
   m_ObjectHideFlags: 0

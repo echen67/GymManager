@@ -3,6 +3,8 @@ using UnityEngine;
 public class MoneyManager : MonoBehaviour
 {
     private AudioSource audioSource;
+    [SerializeField] AudioClip gainMoneySFX;
+    [SerializeField] AudioClip loseMoneySFX;
 
     private int currentMoney;
     private int rentCost = 1;
@@ -11,14 +13,21 @@ public class MoneyManager : MonoBehaviour
     {
         return currentMoney;
     }
+    public bool HasEnoughMoney(int cost)
+    {
+        return currentMoney >= cost;
+    }
     public void AddMoney(int money)
     {
         currentMoney += money;
+        audioSource.clip = gainMoneySFX;
         audioSource.Play();
     }
     public void RemoveMoney(int money)
     {
         currentMoney -= money;
+        audioSource.clip = loseMoneySFX;
+        audioSource.Play();
     }
     public void ResetMoney()
     {

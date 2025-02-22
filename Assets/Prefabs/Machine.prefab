@@ -457,6 +457,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Machine
       objectReference: {fileID: 0}
+    - target: {fileID: 972261633070753599, guid: 25301affd8ec4504c9565ad48413f7f0, type: 3}
+      propertyPath: m_TagString
+      value: Machine
+      objectReference: {fileID: 0}
     - target: {fileID: 2289279210015754251, guid: 25301affd8ec4504c9565ad48413f7f0, type: 3}
       propertyPath: m_Convex
       value: 1

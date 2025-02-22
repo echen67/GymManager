@@ -5,15 +5,16 @@ public class Machine : MonoBehaviour
 {
     [SerializeField] private Image healthUI;
     [SerializeField] private Image cleanUI;
+    private MoneyManager moneyManager;
 
     private bool isOccupied = false;
     private float speed = 2f;
-    
-    private float currentHealth = 10f;
+
+    [SerializeField] private float currentHealth = 10f;
     private float maxHealth = 10f;
     private float targetHealth = 10f;
 
-    private float currentCleanliness = 10f;
+    [SerializeField] private float currentCleanliness = 10f;
     private float maxCleanliness = 10f;
     private float targetCleanliness = 10f;
 
@@ -51,12 +52,19 @@ public class Machine : MonoBehaviour
     public void DamageMachine(float damage)
     {
         currentHealth -= damage;
+        currentHealth = Mathf.Max(currentHealth, 0);
         UpdateHealth();
     }
-    public void RepairMachine(float repair)
+    public void RepairMachine(float repairAmount, int repairCost)
     {
-        currentHealth += repair;
-        UpdateHealth();
+        // Only repair if machine has damage and player has enough money
+        if (moneyManager.HasEnoughMoney(repairCost) && currentHealth < maxHealth)
+        {
+            moneyManager.RemoveMoney(repairCost);
+            currentHealth += repairAmount;
+            currentHealth = Mathf.Min(currentHealth, maxHealth);
+            UpdateHealth();
+        }
     }
 
     public void UpdateCleanliness()
@@ -66,14 +74,23 @@ public class Machine : MonoBehaviour
     public void DirtyMachine(float dirty)
     {
         currentCleanliness -= dirty;
+        currentCleanliness = Mathf.Max(currentCleanliness, 0);
         UpdateCleanliness();
     }
-    public void CleanMachine(float clean)
+    public void CleanMachine(float clean, int cleanCost)
     {
-        currentCleanliness += clean;
-        UpdateCleanliness();
+        if (moneyManager.HasEnoughMoney(cleanCost) && currentCleanliness < maxCleanliness)
+        {
+            moneyManager.RemoveMoney(cleanCost);
+            currentCleanliness += clean;
+            currentCleanliness = Mathf.Min(currentCleanliness, maxCleanliness);
+            UpdateCleanliness();
+        }   
     }
-
+    private void Start()
+    {
+        moneyManager = GameObject.Find("MoneyManager").GetComponent<MoneyManager>();
+    }
     private void Update()
     {
         healthUI.fillAmount = Mathf.MoveTowards(healthUI.fillAmount, targetHealth, speed * Time.deltaTime);

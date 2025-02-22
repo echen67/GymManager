@@ -3,34 +3,44 @@ using UnityEngine;
 public class PlayerController : MonoBehaviour
 {
     [SerializeField] private float speed = 5f;
+    [SerializeField] private float repairAmount = 2f;
+    [SerializeField] private float cleanAmount = 4f;
+    [SerializeField] private int repairCost = 5;
+    [SerializeField] private int cleanCost = 5;
 
-    private CharacterController characterController;
     private Animator animator;
     private AudioSource audioSource;
+    private Machine selectedMachine;
 
     void Start()
     {
-        characterController = GetComponent<CharacterController>();
         animator = GetComponent<Animator>();
         audioSource = GetComponent<AudioSource>();
     }
 
     void Update()
     {
+        // Movement
         Vector3 move = new Vector3(Input.GetAxisRaw("Horizontal"), 0, Input.GetAxisRaw("Vertical"));
-        characterController.Move(Vector3.Normalize(move) * Time.deltaTime * speed);
+        if (!move.Equals(Vector3.zero))
+        {
+            transform.Translate(Vector3.forward * speed * Time.deltaTime);
+        }
 
         // Rotate player to face right direction
-        if(move.Equals(new Vector3(1,0,0)))
+        if (move.Equals(new Vector3(1, 0, 0)))
         {
             transform.eulerAngles = new Vector3(0, 90, 0);
-        } else if (move.Equals(new Vector3(-1,0,0)))
+        }
+        else if (move.Equals(new Vector3(-1, 0, 0)))
         {
-            transform.eulerAngles = new Vector3(0, -90,0);
-        } else if (move.Equals(new Vector3(0,0,1)))
+            transform.eulerAngles = new Vector3(0, -90, 0);
+        }
+        else if (move.Equals(new Vector3(0, 0, 1)))
         {
             transform.eulerAngles = new Vector3(0, 0, 0);
-        } else if (move.Equals(new Vector3(0,0,-1)))
+        }
+        else if (move.Equals(new Vector3(0, 0, -1)))
         {
             transform.eulerAngles = new Vector3(0, 180, 0);
         }
@@ -48,16 +58,35 @@ public class PlayerController : MonoBehaviour
                 audioSource.Play();
             }
         }
-    }
 
-    private void LateUpdate()
-    {
-        // Don't love this but the Rigidbody's freeze position wasn't working
-        transform.position = new Vector3(transform.position.x, 0, transform.position.z);
+        // Repair or clean machine
+        if (Input.GetKeyDown(KeyCode.R) && selectedMachine)
+        {
+            selectedMachine.RepairMachine(repairAmount, repairCost);
+        }
+        if(Input.GetKeyDown(KeyCode.C) && selectedMachine)
+        {
+            selectedMachine.CleanMachine(cleanAmount, cleanCost);
+        }
     }
 
     void OnCollisionEnter(Collision collision)
     {
-        Debug.Log("Collision");
+        if (collision.gameObject.tag == "Machine")
+        {
+            Renderer machineRenderer = collision.gameObject.GetComponent<Renderer>();
+            machineRenderer.material.SetColor("_EmissionColor", new Color(0,0,.4f,0.25f));
+            selectedMachine = collision.gameObject.GetComponent<Machine>();
+        }
+    }
+
+    void OnCollisionExit(Collision collision)
+    {
+        Renderer machineRenderer = collision.gameObject.GetComponent<Renderer>();
+        machineRenderer.material.SetColor("_EmissionColor", new Color(0, 0, .01f));
+        if(selectedMachine.Equals(collision.gameObject.GetComponent<Machine>()))
+        {
+            selectedMachine = null;
+        }
     }
 }
