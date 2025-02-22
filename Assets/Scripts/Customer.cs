@@ -65,6 +65,9 @@ public class Customer : MonoBehaviour
         customerStatus = Status.Finished;
         animator.Play("Walk");
         agent.SetDestination(exitLocation.position);
+
+        targetMachine.DamageMachine(4);
+        targetMachine.DirtyMachine(6);
         targetMachine.FreeMachine();
     }
 

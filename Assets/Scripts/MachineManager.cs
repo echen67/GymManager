@@ -9,7 +9,7 @@ public class MachineManager : MonoBehaviour
     {
         foreach(Machine machine in machines)
         {
-            if (!machine.GetIsOccupied())
+            if (machine.IsAvailable())
             {
                 return machine;
             }
