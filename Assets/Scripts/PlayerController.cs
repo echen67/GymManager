@@ -55,4 +55,9 @@ public class PlayerController : MonoBehaviour
         // Don't love this but the Rigidbody's freeze position wasn't working
         transform.position = new Vector3(transform.position.x, 0, transform.position.z);
     }
+
+    void OnCollisionEnter(Collision collision)
+    {
+        Debug.Log("Collision");
+    }
 }
