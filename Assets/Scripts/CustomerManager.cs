@@ -12,6 +12,25 @@ public class CustomerManager : MonoBehaviour
     [SerializeField] private List<Customer> remainingCustomers;
     private int maxCustomersInQueue = 5;
 
+    public void ResetCustomers()
+    {
+        foreach(Customer customer in customerQueue)
+        {
+            Destroy(customer.gameObject);
+        }
+        foreach(Customer customer in remainingCustomers)
+        {
+            Destroy(customer.gameObject);
+        }
+        customerQueue = new List<Customer>();
+        remainingCustomers = new List<Customer>();
+    }
+
+    public void RemoveCustomer(GameObject customer)
+    {
+        remainingCustomers.Remove(customer.GetComponent<Customer>());
+    }
+
     void Start()
     {
         InvokeRepeating("SpawnCustomer", 0f, timeBetweenSpawn);

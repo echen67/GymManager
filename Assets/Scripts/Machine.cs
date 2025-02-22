@@ -17,6 +17,16 @@ public class Machine : MonoBehaviour
     private float maxCleanliness = 10f;
     private float targetCleanliness = 10f;
 
+    public void ResetMachine()
+    {
+        isOccupied = false;
+        currentHealth = maxHealth;
+        targetHealth = maxHealth;
+        healthUI.fillAmount = maxHealth;
+        currentCleanliness = maxCleanliness;
+        targetCleanliness = maxCleanliness;
+        cleanUI.fillAmount = maxCleanliness;
+}
     public bool IsAvailable()
     {
         return !isOccupied && currentHealth > 0 && currentCleanliness > 0;

@@ -16,4 +16,12 @@ public class MachineManager : MonoBehaviour
         }
         return null;
     }
+
+    public void ResetMachines()
+    {
+        foreach(Machine machine in machines)
+        {
+            machine.ResetMachine();
+        }
+    }
 }

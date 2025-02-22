@@ -9,6 +9,7 @@ public class Customer : MonoBehaviour
     [SerializeField] private Machine targetMachine;
 
     private MoneyManager moneyManager;
+    private CustomerManager customerManager;
     private Transform exitLocation;
     [SerializeField] private NavMeshAgent agent;
     [SerializeField] private Animator animator;
@@ -19,6 +20,7 @@ public class Customer : MonoBehaviour
     void Start()
     {
         moneyManager = GameObject.Find("MoneyManager").GetComponent<MoneyManager>();
+        customerManager = GameObject.Find("CustomerManager").GetComponent<CustomerManager>();
         exitLocation = GameObject.Find("ExitLocation").transform;
         agent = GetComponent<NavMeshAgent>();
         animator = GetComponent<Animator>();
@@ -29,14 +31,6 @@ public class Customer : MonoBehaviour
 
     void Update()
     {
-        // if status is inqueue, setdestination to machine and update status to walking (later we will move this to customer manager)
-        //if (customerStatus == Status.InQueue)
-        //{
-        //    agent.SetDestination(targetMachine.transform.position + new Vector3(0,0,-1));
-        //    customerStatus = Status.WalkingToMachine;
-        //    animator.Play("Walk");
-        //}
-
         // if status is walking and agent.remainingdistance = 0, start working out (position customer in front of machine and play animation)
         if (customerStatus == Status.WalkingToMachine && !agent.pathPending && agent.remainingDistance == 0)
         {
@@ -53,6 +47,7 @@ public class Customer : MonoBehaviour
         if (customerStatus == Status.Finished && !agent.pathPending && agent.remainingDistance == 0)
         {
             moneyManager.AddMoney(10);
+            customerManager.RemoveCustomer(gameObject);
             Destroy(gameObject);
         }
     }

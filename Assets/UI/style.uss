@@ -1,0 +1,33 @@
+.unity-button {
+    font-size: 48px;
+    -unity-font-definition: url("project://database/Assets/UI/BOLD%20MARKER.TTF?fileID=12800000&guid=413f6db91a18ed048a13a5ef59dcb571&type=3#BOLD MARKER");
+    border-top-left-radius: 16px;
+    border-top-right-radius: 16px;
+    border-bottom-right-radius: 16px;
+    border-bottom-left-radius: 16px;
+    border-top-width: 4px;
+    border-right-width: 4px;
+    border-bottom-width: 4px;
+    border-left-width: 4px;
+    border-left-color: rgb(74, 127, 233);
+    border-right-color: rgb(74, 127, 233);
+    border-top-color: rgb(74, 127, 233);
+    border-bottom-color: rgb(74, 127, 233);
+    background-color: rgb(137, 186, 255);
+    color: rgb(39, 84, 174);
+}
+
+.unity-button:hover {
+    scale: 1.1 1.1;
+    transition-property: scale;
+    transition-duration: 0.1s;
+}
+
+.paragraph {
+    -unity-font-definition: url("project://database/Assets/UI/BOLD%20MARKER.TTF?fileID=12800000&guid=413f6db91a18ed048a13a5ef59dcb571&type=3#BOLD MARKER");
+    font-size: 40px;
+    color: rgb(74, 127, 233);
+}
+
+.title {
+}
