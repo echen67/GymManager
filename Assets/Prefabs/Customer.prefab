@@ -50,7 +50,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5279811246306103102, guid: 252ba5fa5d8167e42af72cf97baa830e, type: 3}
       propertyPath: m_Name
-      value: Pudu Variant
+      value: Customer
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -61,11 +61,16 @@ PrefabInstance:
       addedObject: {fileID: 4873713576658305417}
     - targetCorrespondingSourceObject: {fileID: 5279811246306103102, guid: 252ba5fa5d8167e42af72cf97baa830e, type: 3}
       insertIndex: -1
-      addedObject: {fileID: 733998308936690976}
+      addedObject: {fileID: 7015443494446936795}
     - targetCorrespondingSourceObject: {fileID: 5279811246306103102, guid: 252ba5fa5d8167e42af72cf97baa830e, type: 3}
       insertIndex: -1
-      addedObject: {fileID: 7015443494446936795}
+      addedObject: {fileID: 733998308936690976}
   m_SourcePrefab: {fileID: 100100000, guid: 252ba5fa5d8167e42af72cf97baa830e, type: 3}
+--- !u!95 &7965762478791092024 stripped
+Animator:
+  m_CorrespondingSourceObject: {fileID: 6147876873679586677, guid: 252ba5fa5d8167e42af72cf97baa830e, type: 3}
+  m_PrefabInstance: {fileID: 4313806004966433357}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &8257385025503800691 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 5279811246306103102, guid: 252ba5fa5d8167e42af72cf97baa830e, type: 3}
@@ -93,19 +98,6 @@ NavMeshAgent:
   m_BaseOffset: 0
   m_WalkableMask: 4294967295
   m_ObstacleAvoidanceType: 4
---- !u!114 &733998308936690976
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8257385025503800691}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0dbc384144b8aa24cb01b2cb365bc1c3, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  targetMachine: {fileID: 0}
 --- !u!82 &7015443494446936795
 AudioSource:
   m_ObjectHideFlags: 0
@@ -203,3 +195,18 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!114 &733998308936690976
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8257385025503800691}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0dbc384144b8aa24cb01b2cb365bc1c3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  targetMachine: {fileID: 0}
+  agent: {fileID: 4873713576658305417}
+  animator: {fileID: 7965762478791092024}

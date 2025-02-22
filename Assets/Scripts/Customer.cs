@@ -6,13 +6,12 @@ public class Customer : MonoBehaviour
 {
     private enum Status { InQueue, WalkingToMachine, WorkingOut, Finished }
     
-    [SerializeField] private GameObject targetMachine;
+    [SerializeField] private Machine targetMachine;
 
     private MoneyManager moneyManager;
-    private Transform spawnLocation;
     private Transform exitLocation;
-    private NavMeshAgent agent;
-    private Animator animator;
+    [SerializeField] private NavMeshAgent agent;
+    [SerializeField] private Animator animator;
     private AudioSource audioSource;
 
     private Status customerStatus = Status.InQueue;
@@ -20,9 +19,7 @@ public class Customer : MonoBehaviour
     void Start()
     {
         moneyManager = GameObject.Find("MoneyManager").GetComponent<MoneyManager>();
-        spawnLocation = GameObject.Find("SpawnLocation").transform;
         exitLocation = GameObject.Find("ExitLocation").transform;
-        targetMachine = GameObject.Find("Machine");
         agent = GetComponent<NavMeshAgent>();
         animator = GetComponent<Animator>();
         audioSource = GetComponent<AudioSource>();
@@ -33,18 +30,18 @@ public class Customer : MonoBehaviour
     void Update()
     {
         // if status is inqueue, setdestination to machine and update status to walking (later we will move this to customer manager)
-        if (customerStatus == Status.InQueue)
-        {
-            agent.SetDestination(targetMachine.transform.position + new Vector3(0,0,-1));
-            customerStatus = Status.WalkingToMachine;
-            animator.Play("Walk");
-        }
+        //if (customerStatus == Status.InQueue)
+        //{
+        //    agent.SetDestination(targetMachine.transform.position + new Vector3(0,0,-1));
+        //    customerStatus = Status.WalkingToMachine;
+        //    animator.Play("Walk");
+        //}
 
         // if status is walking and agent.remainingdistance = 0, start working out (position customer in front of machine and play animation)
         if (customerStatus == Status.WalkingToMachine && !agent.pathPending && agent.remainingDistance == 0)
         {
             agent.ResetPath();
-            transform.position = targetMachine.transform.position;
+            transform.position = targetMachine.gameObject.transform.position;
             transform.eulerAngles = new Vector3(0, 90, 0);
             animator.Play("Bounce");
             customerStatus = Status.WorkingOut;
@@ -68,5 +65,19 @@ public class Customer : MonoBehaviour
         customerStatus = Status.Finished;
         animator.Play("Walk");
         agent.SetDestination(exitLocation.position);
+        targetMachine.FreeMachine();
+    }
+
+    public void CustomerWalkToMachine(Machine machine)
+    {
+        targetMachine = machine;
+        agent.SetDestination(machine.gameObject.transform.position + new Vector3(0, 0, -1));
+        customerStatus = Status.WalkingToMachine;
+        animator.Play("Walk");
+    }
+
+    public void WalkToLocation(Vector3 position)
+    {
+        agent.SetDestination(position);
     }
 }
