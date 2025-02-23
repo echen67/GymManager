@@ -84,7 +84,7 @@ public class PlayerController : MonoBehaviour
     {
         Renderer machineRenderer = collision.gameObject.GetComponent<Renderer>();
         machineRenderer.material.SetColor("_EmissionColor", new Color(0, 0, .01f));
-        if(selectedMachine.Equals(collision.gameObject.GetComponent<Machine>()))
+        if(selectedMachine && selectedMachine.Equals(collision.gameObject.GetComponent<Machine>()))
         {
             selectedMachine = null;
         }
