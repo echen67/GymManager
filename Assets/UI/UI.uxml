@@ -1,7 +1,8 @@
 <ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" editor-extension-mode="False">
     <Style src="project://database/Assets/UI/style.uss?fileID=7433441132597879392&amp;guid=81ef24bbed6cb8a438ec8904a5d00e79&amp;type=3#style" />
     <ui:VisualElement name="Canvas" style="flex-grow: 1;">
-        <ui:VisualElement name="TopBar" style="flex-grow: 1; flex-direction: row;">
+        <ui:VisualElement name="TopBar" style="flex-grow: 1; flex-direction: row; align-items: flex-start; padding-top: 16px; padding-right: 16px; padding-bottom: 16px; padding-left: 16px;">
+            <ui:Button text="Shop&#10;" name="ShopButton" />
             <ui:ProgressBar value="22.7" name="DayProgressBar" style="flex-grow: 1; min-height: auto; height: auto; scale: 0.5 2; transform-origin: center -50%; max-height: 39px;" />
             <ui:Label text="0" name="MoneyLabel" style="-unity-text-align: upper-right; font-size: 60px;" />
         </ui:VisualElement>
@@ -19,6 +20,30 @@
             <ui:VisualElement name="GameOverPanel" style="flex-grow: 1; background-image: url(&quot;project://database/Assets/UI/GymGameUI_EmptyPanel_Temp.png?fileID=2800000&amp;guid=fd729f4f1c199394a8c2e5d58a0e1b65&amp;type=3#GymGameUI_EmptyPanel_Temp&quot;); -unity-background-scale-mode: scale-to-fit; width: 686px; height: 128px; max-height: 649px; align-items: center; align-self: auto; align-content: flex-start; justify-content: space-between;">
                 <ui:Label text="Game Over!" name="GameOverTitle" style="font-size: 60px; -unity-text-align: upper-center; color: rgb(74, 127, 233); -unity-font-definition: url(&quot;project://database/Assets/UI/BOLD%20MARKER.TTF?fileID=12800000&amp;guid=413f6db91a18ed048a13a5ef59dcb571&amp;type=3#BOLD MARKER&quot;); margin-top: 32px;" />
                 <ui:Button text="Restart" name="RestartButton" style="margin-bottom: 56px;" />
+            </ui:VisualElement>
+        </ui:VisualElement>
+        <ui:VisualElement name="ShopContainer" style="flex-grow: 1; position: absolute; top: 100px; left: 100px; right: 100px; bottom: 100px; display: none;">
+            <ui:VisualElement name="ShopPanel" style="flex-grow: 1; background-image: none; padding-top: 48px; padding-right: 48px; padding-bottom: 48px; padding-left: 48px; background-color: rgb(63, 123, 209); border-top-left-radius: 16px; border-top-right-radius: 16px; border-bottom-right-radius: 16px; border-bottom-left-radius: 16px; flex-direction: row;">
+                <ui:Button text="x" name="CloseShopButton" style="position: absolute; top: -25px; right: -25px; padding-top: 2px; padding-bottom: 2px;" />
+                <ui:TabView name="ShopTabs" style="background-color: rgba(55, 55, 55, 0); flex-grow: 0; -unity-text-align: upper-left;">
+                    <ui:Tab label="Equipment" name="EquipmentTab" style="-unity-background-image-tint-color: rgba(149, 149, 149, 0); background-color: rgb(137, 186, 255); justify-content: flex-start; flex-grow: 1; bottom: auto; align-self: flex-start;">
+                        <ui:ScrollView name="EquipmentScrollView" style="flex-grow: 0; background-color: rgba(137, 186, 255, 0); flex-wrap: nowrap; flex-direction: column; align-items: flex-start; justify-content: flex-start; align-self: auto; align-content: flex-start;">
+                            <ui:VisualElement name="EquipmentItems" style="flex-grow: 0; flex-direction: row; flex-wrap: wrap; width: auto; display: flex; flex-shrink: 1; align-items: flex-start; align-self: flex-start; max-width: 1034px;">
+                                <ui:VisualElement style="flex-grow: 1; width: 500px; height: 500px; background-color: rgb(255, 255, 255); display: flex; align-items: center; margin-right: 16px; margin-bottom: 16px; background-image: url(&quot;project://database/Assets/Images/DumbbellRackSmall.png?fileID=2800000&amp;guid=df48ce2a88cb3d0498f7030f91398ecd&amp;type=3#DumbbellRackSmall&quot;); -unity-background-scale-mode: scale-and-crop;">
+                                    <ui:Label text="Label" style="font-size: 48px;" />
+                                </ui:VisualElement>
+                                <ui:VisualElement name="VisualElement" style="flex-grow: 1; width: 500px; height: 500px; background-color: rgb(0, 0, 0); display: none;" />
+                            </ui:VisualElement>
+                        </ui:ScrollView>
+                    </ui:Tab>
+                    <ui:Tab label="Decorations" name="DecorationTab" />
+                </ui:TabView>
+                <ui:VisualElement name="ShopDetailPanel" style="flex-grow: 1; margin-left: 24px;">
+                    <ui:Label text="Label" name="ItemDetailTitle" style="font-size: 48px; -unity-text-align: upper-center;" />
+                    <ui:VisualElement name="ItemDetailPortrait" style="flex-grow: 1; background-color: rgb(40, 98, 180); -unity-background-scale-mode: scale-and-crop;" />
+                    <ui:Label text="Cost: 0" name="ItemDetailCost" style="font-size: 40px; -unity-text-align: upper-center;" />
+                    <ui:Button text="Purchase" enable-rich-text="true" name="PurchaseButton" />
+                </ui:VisualElement>
             </ui:VisualElement>
         </ui:VisualElement>
     </ui:VisualElement>

@@ -31,3 +31,28 @@
 
 .title {
 }
+
+.unity-tab__header-label {
+    font-size: 40px;
+    -unity-font-definition: url("project://database/Assets/UI/BOLD%20MARKER.TTF?fileID=12800000&guid=413f6db91a18ed048a13a5ef59dcb571&type=3#BOLD MARKER");
+    color: rgb(39, 84, 174);
+    background-color: rgba(137, 186, 255, 0);
+}
+
+.unity-tab__header {
+    background-color: rgb(137, 186, 255);
+    font-size: 60px;
+}
+
+.unity-tab__content-container {
+    padding-top: 16px;
+    padding-right: 16px;
+    padding-bottom: 16px;
+    padding-left: 16px;
+}
+
+.unity-label {
+    -unity-font-definition: url("project://database/Assets/UI/BOLD%20MARKER.TTF?fileID=12800000&guid=413f6db91a18ed048a13a5ef59dcb571&type=3#BOLD MARKER");
+    font-size: 32px;
+    color: rgb(39, 84, 174);
+}

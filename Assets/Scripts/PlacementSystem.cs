@@ -3,22 +3,27 @@ using UnityEngine;
 
 public class PlacementSystem : MonoBehaviour
 {
+    [SerializeField] private MoneyManager moneyManager;
+    [SerializeField] private GameObject buildingSystemParent;
+
     [SerializeField] private GameObject mouseIndicator, cellIndicator;
     [SerializeField] private InputManager inputManager;
     [SerializeField] private Grid grid;
     [SerializeField] private ObjectsDatabaseSO database;
     private int selectedObjectIndex = -1;
+    private int selectedObjectCost = 0;
     [SerializeField] private GameObject gridVisualization;
 
     private void Start()
     {
-        StopPlacement();
-        StartPlacement(2);
+        //StopPlacement();
+        //StartPlacement(2);
     }
 
-    public void StartPlacement(int ID)
+    public void StartPlacement(int ID, int cost)
     {
-        StopPlacement();
+        //StopPlacement();
+        Debug.Log("In StartPlacement");
         selectedObjectIndex = database.objectsData.FindIndex(data => data.ID == ID);
         if(selectedObjectIndex < 0)
         {
@@ -29,6 +34,8 @@ public class PlacementSystem : MonoBehaviour
         cellIndicator.SetActive(true);
         inputManager.OnClicked += PlaceStructure;
         inputManager.OnExit += StopPlacement;
+
+        selectedObjectCost = cost;
     }
 
     private void PlaceStructure()
@@ -41,6 +48,8 @@ public class PlacementSystem : MonoBehaviour
         Vector3Int gridPosition = grid.WorldToCell(mousePosition);
         GameObject newObject = Instantiate(database.objectsData[selectedObjectIndex].Prefab);
         newObject.transform.position = grid.CellToWorld(gridPosition);
+
+        moneyManager.RemoveMoney(selectedObjectCost);
     }
 
     private void StopPlacement()
@@ -50,6 +59,7 @@ public class PlacementSystem : MonoBehaviour
         cellIndicator.SetActive(false);
         inputManager.OnClicked -= PlaceStructure;
         inputManager.OnExit -= StopPlacement;
+        buildingSystemParent.SetActive(false);
     }
 
     private void Update()

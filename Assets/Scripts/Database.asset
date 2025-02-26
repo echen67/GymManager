@@ -17,11 +17,23 @@ MonoBehaviour:
     <ID>k__BackingField: 0
     <Size>k__BackingField: {x: 1, y: 1}
     <Prefab>k__BackingField: {fileID: 5553996600312791958, guid: baeff0bf76537104d8a921b9ffc7d011, type: 3}
+    <Image>k__BackingField: {fileID: 2800000, guid: df48ce2a88cb3d0498f7030f91398ecd, type: 3}
+    <Cost>k__BackingField: 1
   - <Name>k__BackingField: Machine1
     <ID>k__BackingField: 1
     <Size>k__BackingField: {x: 1, y: 1}
     <Prefab>k__BackingField: {fileID: 2808767908226882253, guid: 4c65e9bcfc6946747b407eeddcf40bdc, type: 3}
+    <Image>k__BackingField: {fileID: 2800000, guid: df48ce2a88cb3d0498f7030f91398ecd, type: 3}
+    <Cost>k__BackingField: 5
   - <Name>k__BackingField: Machine2
     <ID>k__BackingField: 2
     <Size>k__BackingField: {x: 2, y: 1}
     <Prefab>k__BackingField: {fileID: 4773750408386289569, guid: 6e540e01600e6f44c86e468d8ee61dce, type: 3}
+    <Image>k__BackingField: {fileID: 2800000, guid: df48ce2a88cb3d0498f7030f91398ecd, type: 3}
+    <Cost>k__BackingField: 10
+  - <Name>k__BackingField: Small Dumbbell Rack
+    <ID>k__BackingField: 3
+    <Size>k__BackingField: {x: 1, y: 1}
+    <Prefab>k__BackingField: {fileID: 5800036412752308790, guid: 61b7c47481d6501498ad8fa2e45c573b, type: 3}
+    <Image>k__BackingField: {fileID: 2800000, guid: df48ce2a88cb3d0498f7030f91398ecd, type: 3}
+    <Cost>k__BackingField: 5
