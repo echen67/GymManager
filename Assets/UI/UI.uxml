@@ -4,7 +4,7 @@
         <ui:VisualElement name="TopBar" style="flex-grow: 1; flex-direction: row; align-items: flex-start; padding-top: 16px; padding-right: 16px; padding-bottom: 16px; padding-left: 16px;">
             <ui:Button text="Shop&#10;" name="ShopButton" style="display: none;" />
             <ui:ProgressBar value="22.7" name="DayProgressBar" style="flex-grow: 1; min-height: auto; height: auto; scale: 0.5 2; transform-origin: center -50%; max-height: 39px;" />
-            <ui:Label text="0" name="MoneyLabel" style="-unity-text-align: upper-right; font-size: 60px;" />
+            <ui:Label text="0" name="MoneyLabel" style="-unity-text-align: upper-right; font-size: 60px; color: rgb(137, 186, 255);" />
         </ui:VisualElement>
         <ui:VisualElement name="DayEndContainer" style="flex-grow: 1; position: absolute; top: 0; left: 0; right: 0; bottom: 0; align-items: center; justify-content: center; visibility: visible; display: none;">
             <ui:VisualElement name="DayEndPanel" style="flex-grow: 1; background-image: url(&quot;project://database/Assets/UI/GymGameUI_EmptyPanel_Temp.png?fileID=2800000&amp;guid=fd729f4f1c199394a8c2e5d58a0e1b65&amp;type=3#GymGameUI_EmptyPanel_Temp&quot;); -unity-background-scale-mode: scale-to-fit; width: 686px; height: 128px; max-height: 649px; align-items: center; align-self: auto; align-content: flex-start;">

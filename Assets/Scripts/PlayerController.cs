@@ -75,7 +75,12 @@ public class PlayerController : MonoBehaviour
         if (collision.gameObject.tag == "Machine")
         {
             Renderer machineRenderer = collision.gameObject.GetComponent<Renderer>();
-            machineRenderer.material.SetColor("_EmissionColor", new Color(0,0,.4f,0.25f));
+            Material[] materials = machineRenderer.materials;
+            foreach(Material mat in materials)
+            {
+                mat.SetColor("_EmissionColor", new Color(0, 0, .4f, 0.25f));
+            }
+            machineRenderer.materials = materials;
             selectedMachine = collision.gameObject.GetComponent<Machine>();
         }
     }
@@ -83,8 +88,13 @@ public class PlayerController : MonoBehaviour
     void OnCollisionExit(Collision collision)
     {
         Renderer machineRenderer = collision.gameObject.GetComponent<Renderer>();
-        machineRenderer.material.SetColor("_EmissionColor", new Color(0, 0, .01f));
-        if(selectedMachine && selectedMachine.Equals(collision.gameObject.GetComponent<Machine>()))
+        Material[] materials = machineRenderer.materials;
+        foreach (Material mat in materials)
+        {
+            mat.SetColor("_EmissionColor", new Color(0, 0, .01f));
+        }
+        machineRenderer.materials = materials;
+        if (selectedMachine && selectedMachine.Equals(collision.gameObject.GetComponent<Machine>()))
         {
             selectedMachine = null;
         }
