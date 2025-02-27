@@ -8,6 +8,7 @@ public class Customer : MonoBehaviour
     
     [SerializeField] private Machine targetMachine;
 
+    private RatingManager ratingManager;
     private MoneyManager moneyManager;
     private CustomerManager customerManager;
     private Transform exitLocation;
@@ -19,6 +20,7 @@ public class Customer : MonoBehaviour
 
     void Start()
     {
+        ratingManager = GameObject.Find("RatingManager").GetComponent<RatingManager>();
         moneyManager = GameObject.Find("MoneyManager").GetComponent<MoneyManager>();
         customerManager = GameObject.Find("CustomerManager").GetComponent<CustomerManager>();
         exitLocation = GameObject.Find("ExitLocation").transform;
@@ -48,6 +50,7 @@ public class Customer : MonoBehaviour
         {
             moneyManager.AddMoney(10);
             customerManager.RemoveCustomer(gameObject);
+            ratingManager.IncreaseRating(10);
             Destroy(gameObject);
         }
     }

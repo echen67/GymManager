@@ -18,6 +18,7 @@ public class UI : MonoBehaviour
     private Button beginNextDayButton;
     private VisualElement gameOverPanel;
     private Button restartButton;
+    private VisualElement rating;
 
     // Shop UI
     private Button shopButton;
@@ -42,6 +43,7 @@ public class UI : MonoBehaviour
         dayCompleteOKButton = uiDocument.rootVisualElement.Q<Button>("DayCompleteOK");
         beginNextDayButton = uiDocument.rootVisualElement.Q<Button>("BeginNextDayButton");
         restartButton = uiDocument.rootVisualElement.Q<Button>("RestartButton");
+        rating = uiDocument.rootVisualElement.Q<VisualElement>("RatingFill");
 
         dayCompleteOKButton.clicked += ClickedDayCompleteOK;
         beginNextDayButton.clicked += ClickedBeginNextDayButton;
@@ -164,7 +166,12 @@ public class UI : MonoBehaviour
         dayManager.StartDay();
         //Time.timeScale = 1;
     }
+    public void SetRating(float ratingVal)
+    {
+        rating.style.scale = new StyleScale(new Scale(new Vector2(ratingVal, 1f)));
+    }
 
+    // Shop Methods
     public void ClickedShopButton()
     {
         shopPanel.style.display = DisplayStyle.Flex;

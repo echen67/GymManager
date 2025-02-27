@@ -2,7 +2,9 @@
     <Style src="project://database/Assets/UI/style.uss?fileID=7433441132597879392&amp;guid=81ef24bbed6cb8a438ec8904a5d00e79&amp;type=3#style" />
     <ui:VisualElement name="Canvas" style="flex-grow: 1;">
         <ui:VisualElement name="TopBar" style="flex-grow: 1; flex-direction: row; align-items: flex-start; padding-top: 16px; padding-right: 16px; padding-bottom: 16px; padding-left: 16px;">
-            <ui:Button text="Shop&#10;" name="ShopButton" style="display: none;" />
+            <ui:VisualElement name="RatingBar" style="flex-grow: 1; background-image: url(&quot;project://database/Assets/UI/noun-five-stars-1717601.svg?fileID=7388822144124034973&amp;guid=1a2cc2022eed4f940ad81a6747956237&amp;type=3#noun-five-stars-1717601&quot;); width: auto; height: 60px; -unity-background-scale-mode: scale-to-fit; align-items: stretch; align-self: flex-start; overflow: hidden; background-color: rgba(0, 0, 0, 0); max-width: 250px;">
+                <ui:VisualElement name="RatingFill" style="flex-grow: 1; background-color: rgb(238, 189, 30); width: 250px; max-width: 250px; align-self: auto; background-position-x: center 0; scale: 0.25 1; align-items: flex-start; transform-origin: left bottom; align-content: flex-start;" />
+            </ui:VisualElement>
             <ui:ProgressBar value="22.7" name="DayProgressBar" style="flex-grow: 1; min-height: auto; height: auto; scale: 0.5 2; transform-origin: center -50%; max-height: 39px;" />
             <ui:Label text="0" name="MoneyLabel" style="-unity-text-align: upper-right; font-size: 60px; color: rgb(137, 186, 255);" />
         </ui:VisualElement>
@@ -46,6 +48,9 @@
                 </ui:VisualElement>
             </ui:VisualElement>
         </ui:VisualElement>
-        <ui:Button text="Begin Next Day &gt;&gt;" name="BeginNextDayButton" style="align-items: stretch; align-self: flex-end; margin-right: 16px; margin-bottom: 16px; background-color: rgba(137, 186, 255, 0); border-left-color: rgba(74, 127, 233, 0); border-right-color: rgba(74, 127, 233, 0); border-top-color: rgba(74, 127, 233, 0); border-bottom-color: rgba(74, 127, 233, 0); color: rgb(137, 186, 255); display: none;" />
+        <ui:VisualElement name="BottomContainer" style="flex-grow: 0; flex-direction: row; align-items: flex-end; justify-content: space-between; padding-bottom: 16px; padding-right: 16px; padding-left: 16px;">
+            <ui:Button text="Shop&#10;" name="ShopButton" style="display: none; align-items: stretch;" />
+            <ui:Button text="Begin Next Day &gt;&gt;" name="BeginNextDayButton" style="align-items: stretch; align-self: flex-end; margin-right: 0; margin-bottom: 0; background-color: rgba(137, 186, 255, 0); border-left-color: rgba(74, 127, 233, 0); border-right-color: rgba(74, 127, 233, 0); border-top-color: rgba(74, 127, 233, 0); border-bottom-color: rgba(74, 127, 233, 0); color: rgb(137, 186, 255); display: none; padding-top: 0; padding-right: 0; padding-bottom: 0; padding-left: 0; margin-top: 0; margin-left: 0;" />
+        </ui:VisualElement>
     </ui:VisualElement>
 </ui:UXML>
