@@ -3,6 +3,7 @@ using System.Collections.Generic;
 
 public class CustomerManager : MonoBehaviour
 {
+    [SerializeField] private DayManager dayManager;
     [SerializeField] private MachineManager machineManager;
     [SerializeField] private Transform spawnLocation;
     [SerializeField] private GameObject customerPrefab;
@@ -63,7 +64,7 @@ public class CustomerManager : MonoBehaviour
 
     void SpawnCustomer()
     {
-        if (customerQueue.Count >= maxCustomersInQueue) return;
+        if (customerQueue.Count >= maxCustomersInQueue || dayManager.GetIsDay() == false) return;
 
         Vector3 pos = new Vector3(spawnLocation.position.x + customerQueue.Count, spawnLocation.position.y, spawnLocation.position.z);
         GameObject spawnedCustomer = Instantiate(customerPrefab, pos, spawnLocation.rotation);

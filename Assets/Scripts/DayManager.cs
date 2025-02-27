@@ -10,34 +10,52 @@ public class DayManager : MonoBehaviour
     [SerializeField] private float timeSpeed = 1f;
     private float currentTime = 0f;
     private float maxTime = 100f;
+    private bool IsDay = true;
 
     public float GetTime()
     {
         return currentTime;
     }
+    public bool GetIsDay()
+    {
+        return IsDay;
+    }
+    public void StartDay()
+    {
+        IsDay = true;
+    }
+    public void EndDay()
+    {
+        IsDay = false;
+    }
 
     void Update()
     {
-        currentTime += timeSpeed * Time.deltaTime;
-
-        // End the day
-        if (currentTime >= maxTime)
+        if (IsDay)
         {
-            bool paidRent = moneyManager.PayRent();
-            if (paidRent)
-            {
-                uiScript.ShowDayCompletePanel();
-            } else
-            {
-                uiScript.ShowGameOverPanel();
-                moneyManager.ResetMoney();
-            }
+            currentTime += timeSpeed * Time.deltaTime;
 
-            // in both cases, pause the game, reset machines and customers, and reset time
-            currentTime = 0;
-            Time.timeScale = 0;
-            customerManager.ResetCustomers();
-            machineManager.ResetMachines();
+            // End the day
+            if (currentTime >= maxTime)
+            {
+                bool paidRent = moneyManager.PayRent();
+                if (paidRent)
+                {
+                    uiScript.ShowDayCompletePanel();
+                }
+                else
+                {
+                    uiScript.ShowGameOverPanel();
+                    moneyManager.ResetMoney();
+                }
+
+                // in both cases, pause the game, reset machines and customers, and reset time
+                currentTime = 0;
+                //Time.timeScale = 0;
+                EndDay();
+                customerManager.ResetCustomers();
+                machineManager.ResetMachines();
+            }
         }
     }
 }

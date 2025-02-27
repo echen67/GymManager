@@ -1534,7 +1534,7 @@ MonoBehaviour:
   machineManager: {fileID: 1032511191}
   customerManager: {fileID: 1786113732}
   uiScript: {fileID: 379653660}
-  timeSpeed: 1
+  timeSpeed: 2
 --- !u!4 &1565867561
 Transform:
   m_ObjectHideFlags: 0
@@ -1723,6 +1723,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 75cea71cd4e9ff44e99a7f1c4e0a2f69, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  dayManager: {fileID: 1565867560}
   machineManager: {fileID: 1032511191}
   spawnLocation: {fileID: 1999692772}
   customerPrefab: {fileID: 8257385025503800691, guid: 8b60602ccc213944e80a02cb6cbc62d2, type: 3}

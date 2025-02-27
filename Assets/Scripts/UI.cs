@@ -14,7 +14,8 @@ public class UI : MonoBehaviour
     private Label moneyLabel;
     private ProgressBar dayProgressBar;
     private VisualElement dayCompletePanel;
-    private Button nextDayButton;
+    private Button dayCompleteOKButton;
+    private Button beginNextDayButton;
     private VisualElement gameOverPanel;
     private Button restartButton;
 
@@ -38,10 +39,12 @@ public class UI : MonoBehaviour
         dayProgressBar = uiDocument.rootVisualElement.Q<ProgressBar>("DayProgressBar");
         dayCompletePanel = uiDocument.rootVisualElement.Q<VisualElement>("DayEndContainer");
         gameOverPanel = uiDocument.rootVisualElement.Q<VisualElement>("GameOverContainer");
-        nextDayButton = uiDocument.rootVisualElement.Q<Button>("NextDayButton");
+        dayCompleteOKButton = uiDocument.rootVisualElement.Q<Button>("DayCompleteOK");
+        beginNextDayButton = uiDocument.rootVisualElement.Q<Button>("BeginNextDayButton");
         restartButton = uiDocument.rootVisualElement.Q<Button>("RestartButton");
 
-        nextDayButton.clicked += ClickedNextDayButton;
+        dayCompleteOKButton.clicked += ClickedDayCompleteOK;
+        beginNextDayButton.clicked += ClickedBeginNextDayButton;
         restartButton.clicked += ClickedRestartButton;
 
         shopButton = uiDocument.rootVisualElement.Q<Button>("ShopButton");
@@ -138,10 +141,18 @@ public class UI : MonoBehaviour
     {
         dayCompletePanel.style.display = DisplayStyle.Flex;
     }
-    private void ClickedNextDayButton()
+    private void ClickedDayCompleteOK()
     {
         dayCompletePanel.style.display = DisplayStyle.None;
-        Time.timeScale = 1;
+        beginNextDayButton.style.display = DisplayStyle.Flex;
+        shopButton.style.display = DisplayStyle.Flex;
+    }
+    private void ClickedBeginNextDayButton()
+    {
+        beginNextDayButton.style.display = DisplayStyle.None;
+        shopButton.style.display = DisplayStyle.None;
+        //Time.timeScale = 1;
+        dayManager.StartDay();
     }
     public void ShowGameOverPanel()
     {
@@ -150,7 +161,8 @@ public class UI : MonoBehaviour
     private void ClickedRestartButton()
     {
         gameOverPanel.style.display = DisplayStyle.None;
-        Time.timeScale = 1;
+        dayManager.StartDay();
+        //Time.timeScale = 1;
     }
 
     public void ClickedShopButton()

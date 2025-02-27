@@ -47,6 +47,10 @@ public class PlacementSystem : MonoBehaviour
         {
             return;
         }
+
+        // TODO: show error if player doesn't have enough money
+        if (moneyManager.HasEnoughMoney(selectedObjectCost) == false) return;
+
         Vector3 mousePosition = inputManager.GetSelectedMapPosition();
         Vector3Int gridPosition = grid.WorldToCell(mousePosition);
         GameObject newObject = Instantiate(database.objectsData[selectedObjectIndex].Prefab);

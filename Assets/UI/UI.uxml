@@ -2,7 +2,7 @@
     <Style src="project://database/Assets/UI/style.uss?fileID=7433441132597879392&amp;guid=81ef24bbed6cb8a438ec8904a5d00e79&amp;type=3#style" />
     <ui:VisualElement name="Canvas" style="flex-grow: 1;">
         <ui:VisualElement name="TopBar" style="flex-grow: 1; flex-direction: row; align-items: flex-start; padding-top: 16px; padding-right: 16px; padding-bottom: 16px; padding-left: 16px;">
-            <ui:Button text="Shop&#10;" name="ShopButton" />
+            <ui:Button text="Shop&#10;" name="ShopButton" style="display: none;" />
             <ui:ProgressBar value="22.7" name="DayProgressBar" style="flex-grow: 1; min-height: auto; height: auto; scale: 0.5 2; transform-origin: center -50%; max-height: 39px;" />
             <ui:Label text="0" name="MoneyLabel" style="-unity-text-align: upper-right; font-size: 60px;" />
         </ui:VisualElement>
@@ -13,7 +13,7 @@
                     <ui:Label text="Customers served" name="CustomersServed" class="paragraph" />
                     <ui:Label text="Money Earned" name="MoneyEarned" class="paragraph" />
                 </ui:VisualElement>
-                <ui:Button text="Next day" name="NextDayButton" style="margin-bottom: 56px;" />
+                <ui:Button text="Ok" name="DayCompleteOK" style="margin-bottom: 56px;" />
             </ui:VisualElement>
         </ui:VisualElement>
         <ui:VisualElement name="GameOverContainer" style="flex-grow: 1; position: absolute; top: 0; left: 0; right: 0; bottom: 0; align-items: center; justify-content: center; visibility: visible; display: none;">
@@ -46,5 +46,6 @@
                 </ui:VisualElement>
             </ui:VisualElement>
         </ui:VisualElement>
+        <ui:Button text="Begin Next Day &gt;&gt;" name="BeginNextDayButton" style="align-items: stretch; align-self: flex-end; margin-right: 16px; margin-bottom: 16px; background-color: rgba(137, 186, 255, 0); border-left-color: rgba(74, 127, 233, 0); border-right-color: rgba(74, 127, 233, 0); border-top-color: rgba(74, 127, 233, 0); border-bottom-color: rgba(74, 127, 233, 0); color: rgb(137, 186, 255); display: none;" />
     </ui:VisualElement>
 </ui:UXML>
