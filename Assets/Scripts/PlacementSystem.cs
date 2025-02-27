@@ -1,8 +1,11 @@
 using System;
 using UnityEngine;
+using Unity.AI.Navigation;
 
 public class PlacementSystem : MonoBehaviour
 {
+    [SerializeField] private NavMeshSurface navMesh;
+    [SerializeField] private MachineManager machineManager;
     [SerializeField] private MoneyManager moneyManager;
     [SerializeField] private GameObject buildingSystemParent;
 
@@ -49,7 +52,9 @@ public class PlacementSystem : MonoBehaviour
         GameObject newObject = Instantiate(database.objectsData[selectedObjectIndex].Prefab);
         newObject.transform.position = grid.CellToWorld(gridPosition);
 
+        machineManager.AddMachine(newObject.GetComponentInChildren<Machine>());
         moneyManager.RemoveMoney(selectedObjectCost);
+        navMesh.BuildNavMesh();
     }
 
     private void StopPlacement()

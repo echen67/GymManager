@@ -1339,6 +1339,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e059ab6a62b56f84088d438703571223, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  navMesh: {fileID: 396715658}
+  machineManager: {fileID: 1032511191}
   moneyManager: {fileID: 1783287824}
   buildingSystemParent: {fileID: 1404491868}
   mouseIndicator: {fileID: 669136054}

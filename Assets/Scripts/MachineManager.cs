@@ -5,6 +5,10 @@ public class MachineManager : MonoBehaviour
 {
     [SerializeField] private List<Machine> machines;
 
+    public void AddMachine(Machine newMachine)
+    {
+        machines.Add(newMachine);
+    }
     public Machine FindFreeMachine()
     {
         foreach(Machine machine in machines)
