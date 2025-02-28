@@ -31,6 +31,19 @@ public class CustomerManager : MonoBehaviour
     {
         remainingCustomers.Remove(customer.GetComponent<Customer>());
     }
+    public void RemoveCustomerFromQueue(GameObject customer)
+    {
+        customerQueue.Remove(customer.GetComponent<Customer>());
+    }
+
+    public void ShiftCustomersUpQueue()
+    {
+        for (int i = 0; i < customerQueue.Count; i++)
+        {
+            Vector3 newPos = new Vector3(spawnLocation.position.x + i, spawnLocation.position.y, spawnLocation.position.z);
+            customerQueue[i].WalkToLocation(newPos);
+        }
+    }
 
     void Start()
     {
@@ -53,11 +66,7 @@ public class CustomerManager : MonoBehaviour
                 remainingCustomers.Add(firstCustomer);
 
                 // Shift remaining customers up
-                for(int i = 0; i < customerQueue.Count; i++)
-                {
-                    Vector3 newPos = new Vector3(spawnLocation.position.x + i, spawnLocation.position.y, spawnLocation.position.z);
-                    customerQueue[i].WalkToLocation(newPos);
-                }
+                ShiftCustomersUpQueue();
             }
         }
     }
